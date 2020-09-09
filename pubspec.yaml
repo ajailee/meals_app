@@ -73,9 +73,9 @@ flutter:
            - asset: assets/fonts/RobotoCondensed-Regular.ttf
            - asset: assets/fonts/RobotoCondensed-Bold.ttf
              weight: 700
-           - asset: fonts/RobotoCondensed-Light.ttf
+           - asset: assets/fonts/RobotoCondensed-Light.ttf
              weight: 300
-           - asset: fonts/RobotoCondensed-Italic.ttf
+           - asset: assets/fonts/RobotoCondensed-Italic.ttf
              style: italic
 
   # For details regarding fonts from package dependencies,

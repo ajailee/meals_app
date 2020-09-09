@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/Screen/CategoryScreen.dart';
+import 'Screen/category_meals_screen.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           accentColor: Colors.amberAccent,
-          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          canvasColor: Colors.black,
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
                 bodyText1: TextStyle(
@@ -20,10 +21,14 @@ class MyApp extends StatelessWidget {
                 ),
                 headline6: TextStyle(
                   fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
                   fontFamily: 'RobotoCondensed',
                 ),
               )),
-      home: CategoryScreen(),
+        routes: {
+        '/' : (ctx) => CategoryScreen(),
+        CategoryMealsScreen.routeName : (ctx) => CategoryMealsScreen(),
+      }
     );
   }
 }
