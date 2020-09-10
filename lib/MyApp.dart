@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/Screen/CategoryScreen.dart';
+import 'package:meals_app/Screen/toptapbar.dart';
+import 'Screen/CategoryScreen.dart';
 import 'Screen/category_meals_screen.dart';
+import 'Screen/meal_detail_screen.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           accentColor: Colors.amberAccent,
-          canvasColor: Colors.black,
+          canvasColor: Colors.black45,
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
                 bodyText1: TextStyle(
@@ -26,9 +28,13 @@ class MyApp extends StatelessWidget {
                 ),
               )),
         routes: {
-        '/' : (ctx) => CategoryScreen(),
-        CategoryMealsScreen.routeName : (ctx) => CategoryMealsScreen(),
-      }
+        '/' : (ctx) => TopTapBar(),
+          CategoryMealsScreen.routeName : (ctx) => CategoryMealsScreen(),
+          MealDetailScreen.routeName : (ctx)=>MealDetailScreen(),
+        },
+        onUnknownRoute: (settings) {
+          return MaterialPageRoute(builder: (context) => CategoryMealsScreen(),);
+        },
     );
   }
 }
