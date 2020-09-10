@@ -33,7 +33,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           currentIndex: SelectedPageIndex,
           selectedItemColor: Theme.of(context).accentColor,
           unselectedItemColor: Colors.white,
-          type: BottomNavigationBarType.shifting, /////fixed type is default 
+          type: BottomNavigationBarType.shifting, /////fixed type is default
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.category),
