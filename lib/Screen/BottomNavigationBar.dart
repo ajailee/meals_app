@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/Screen/FavoritesScreen.dart';
-import 'package:meals_app/Screen/category_meals_screen.dart';
+import 'package:meals_app/widget/MainDrawer.dart';
+
+import 'FavoritesScreen.dart';
+import 'CategoryScreen.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -9,14 +11,20 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   final List<Map<String, Object>> _pages = [
-    {'page': CategoryMealsScreen(), 'title': 'Categories'},
-    {'page': FavoritesScreen(), 'title': 'Favorites'},
+    {
+      'page': CategoryScreen(),
+      'title': 'Categories',
+    },
+    {
+      'page': FavoritesScreen(),
+      'title': 'Your Favorite',
+    },
   ];
-  int SelectedPageIndex = 0;
+  int _selectedPageIndex = 0;
 
-  void selectpage(index) {
+  void _selectPage(int index) {
     setState(() {
-      SelectedPageIndex = index;
+      _selectedPageIndex = index;
     });
   }
 
@@ -24,26 +32,30 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          _pages[SelectedPageIndex]['title'],
-        ),
+        title: Text(_pages[_selectedPageIndex]['title']),
       ),
+      drawer: MainDrawer(),
+      body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-          onTap: selectpage,
-          currentIndex: SelectedPageIndex,
-          selectedItemColor: Theme.of(context).accentColor,
-          unselectedItemColor: Colors.white,
-          type: BottomNavigationBarType.shifting, /////fixed type is default
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.category),
-                title: Text('Categories'),
-                backgroundColor: Theme.of(context).primaryColor),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.star),
-                title: Text('Favorites'),
-                backgroundColor: Theme.of(context).primaryColor)
-          ]),
+        onTap: _selectPage,
+        backgroundColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Theme.of(context).accentColor,
+        currentIndex: _selectedPageIndex,
+        // type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.category),
+            title: Text('Categories'),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.star),
+            title: Text('Favorites'),
+          ),
+        ],
+      ),
     );
   }
 }
