@@ -5,6 +5,10 @@ import '../widget/MainDrawer.dart';
 class Settings extends StatefulWidget {
   static String routeName = '/Settings';
 
+  Function _setFilters;
+  Map<String,bool> currentFilters;
+  Settings(this.currentFilters,this._setFilters);
+
   @override
   _SettingsState createState() => _SettingsState();
 }
@@ -14,6 +18,21 @@ class _SettingsState extends State<Settings> {
   bool _vegetarian = false;
   bool _vegan = false;
   bool _lactoseFree = false;
+
+  Map<String,bool> _filters={
+    'gluten':false,
+    'lactose':false,
+    'vegan':false,
+    'vegetarian':false,
+  };
+@override
+  initState(){
+  _glutenFree= widget.currentFilters['gluten'];
+  _lactoseFree= widget.currentFilters['lactose'];
+  _vegan= widget.currentFilters['vegan'];
+  _vegetarian= widget.currentFilters['vegetarian'];
+  super.initState();
+}
 
   Widget _buildSwitchListTile(
       String title, String subtitle, bool currentValue, Function updateValue) {
@@ -37,6 +56,17 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Settings'),
+          actions: [
+            IconButton(icon:Icon(Icons.save),onPressed:(){
+              _filters={
+                'gluten':_glutenFree,
+                'lactose':_lactoseFree,
+                'vegan':_vegan,
+                'vegetarian':_vegetarian,
+              };
+              widget._setFilters(_filters);
+              },)
+          ],
         ),
         backgroundColor: Colors.white,
         drawer: MainDrawer(),

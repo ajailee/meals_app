@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widget/MainDrawer.dart';
 
 import 'FavoritesScreen.dart';
@@ -7,19 +8,28 @@ import 'CategoryScreen.dart';
 class BottomNavigation extends StatefulWidget {
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
+  List<Meal> _favoriteMeals;
+
+  BottomNavigation(this._favoriteMeals);
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoryScreen(),
-      'title': 'Categories',
-    },
-    {
-      'page': FavoritesScreen(),
-      'title': 'Your Favorite',
-    },
-  ];
+  @override
+  void initState() {
+
+    super.initState();
+    _pages = [
+      {
+        'page': CategoryScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(widget._favoriteMeals),
+        'title': 'Your Favorite',
+      },
+    ];
+  }
+   List<Map<String, Object>> _pages ;
   int _selectedPageIndex = 0;
 
   void _selectPage(int index) {

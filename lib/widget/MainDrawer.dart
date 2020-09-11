@@ -25,7 +25,7 @@ class MainDrawer extends StatelessWidget {
                 leading: Icon(Icons.restaurant),
                 title: Text('Meals'),
                 onTap: () {
-                  Navigator.of(context).pushNamed('/');
+                  Navigator.of(context).pushReplacementNamed('/');
                 },
               ),
               ListTile(
