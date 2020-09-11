@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/Screen/BottomNavigationBar.dart';
-import 'package:meals_app/Screen/FavoritesScreen.dart';
-import 'package:meals_app/Screen/Settings.dart';
-import 'package:meals_app/models/dummy_data.dart';
-import 'package:meals_app/models/meal.dart';
+import './Screen/BottomNavigationBar.dart';
+import './Screen/FavoritesScreen.dart';
+import './Screen/Settings.dart';
+import './models/dummy_data.dart';
+import './models/meal.dart';
 
 import 'Screen/category_meals_screen.dart';
 import 'Screen/meal_detail_screen.dart';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/meal.dart';
-import 'package:meals_app/widget/MainDrawer.dart';
+
+import '../models/meal.dart';
+
+import '../widget/MainDrawer.dart';
 
 import 'FavoritesScreen.dart';
 import 'CategoryScreen.dart';
